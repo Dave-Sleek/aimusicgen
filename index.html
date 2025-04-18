@@ -1,1 +1,58 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Neon Beats AI - AI Music Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="neon-header">
+            <h1>Neon Beats AI</h1>
+            <p>Generate unique music with artificial intelligence</p>
+        </header>
+        
+        <main>
+            <section class="control-panel glassmorphism">
+                <div class="genre-selector">
+                    <h3>Select Genre</h3>
+                    <div class="genre-buttons"></div>
+                </div>
+                
+                <div class="mood-sliders">
+                    <h3>Adjust Mood</h3>
+                    <div class="sliders-container"></div>
+                </div>
+                
+                <div class="length-control">
+                    <h3>Duration</h3>
+                    <input type="range" id="length-slider" min="15" max="120" value="30">
+                    <span id="length-value">30 seconds</span>
+                </div>
+                
+                <button id="generate-btn" class="neon-button">Generate Music</button>
+            </section>
+            
+            <section class="visualization-container">
+                <canvas id="visualizer"></canvas>
+                <div class="playback-controls">
+                    <button id="play-btn" class="control-button">▶</button>
+                    <button id="pause-btn" class="control-button">⏸</button>
+                    <button id="download-btn" class="control-button">↓ Download</button>
+                </div>
+            </section>
+            
+            <section class="history-section glassmorphism">
+                <h3>Your Creations</h3>
+                <div class="history-grid"></div>
+            </section>
+        </main>
+    </div>
+    
+    <script src="script.js"></script>
+    <script src="audioProcessor.js"></script>
+    <script src="visualizer.js"></script>
+</body>
+</html>
