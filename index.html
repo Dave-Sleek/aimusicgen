@@ -1,58 +1,144 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neon Beats AI - AI Music Generator</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="app-container">
         <header class="neon-header">
-            <h1>Neon Beats AI</h1>
-            <p>Generate unique music with artificial intelligence</p>
+            <h1>NEON BEATS AI</h1>
+            <p class="subtitle">Create unique music with artificial intelligence</p>
         </header>
         
         <main>
+            <!-- Control Panel Section -->
             <section class="control-panel glassmorphism">
-                <div class="genre-selector">
-                    <h3>Select Genre</h3>
-                    <div class="genre-buttons"></div>
+                <div class="control-section">
+                    <h2><span class="icon">🎛️</span> Music Settings</h2>
+                    
+                    <!-- Genre Selection -->
+                    <div class="genre-selector">
+                        <h3>Select Genre</h3>
+                        <div class="genre-buttons">
+                            <button class="genre-btn active" data-genre="electronic">
+                                <span class="genre-icon">🎛️</span> Electronic
+                            </button>
+                            <button class="genre-btn" data-genre="ambient">
+                                <span class="genre-icon">🌌</span> Ambient
+                            </button>
+                            <button class="genre-btn" data-genre="rock">
+                                <span class="genre-icon">🎸</span> Rock
+                            </button>
+                            <button class="genre-btn" data-genre="hiphop">
+                                <span class="genre-icon">🎤</span> Hip Hop
+                            </button>
+                            <button class="genre-btn" data-genre="classical">
+                                <span class="genre-icon">🎻</span> Classical
+                            </button>
+                            <button class="genre-btn" data-genre="jazz">
+                                <span class="genre-icon">🎷</span> Jazz
+                            </button>
+                            <button class="genre-btn" data-genre="lofi">
+                                <span class="genre-icon">☕</span> Lo-Fi
+                            </button>
+                            <button class="genre-btn" data-genre="synthwave">
+                                <span class="genre-icon">🌃</span> Synthwave
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Mood Parameters -->
+                    <div class="mood-sliders">
+                        <h3><span class="icon">🎚️</span> Adjust Mood</h3>
+                        <div class="sliders-container">
+                            <div class="slider-group">
+                                <label for="energy-slider">Energy</label>
+                                <input type="range" id="energy-slider" min="0" max="100" value="50">
+                                <span class="slider-value">50</span>
+                            </div>
+                            <div class="slider-group">
+                                <label for="happiness-slider">Happiness</label>
+                                <input type="range" id="happiness-slider" min="0" max="100" value="50">
+                                <span class="slider-value">50</span>
+                            </div>
+                            <div class="slider-group">
+                                <label for="danceability-slider">Danceability</label>
+                                <input type="range" id="danceability-slider" min="0" max="100" value="50">
+                                <span class="slider-value">50</span>
+                            </div>
+                            <div class="slider-group">
+                                <label for="complexity-slider">Complexity</label>
+                                <input type="range" id="complexity-slider" min="0" max="100" value="50">
+                                <span class="slider-value">50</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Duration Control -->
+                    <div class="length-control">
+                        <h3><span class="icon">⏱️</span> Duration</h3>
+                        <div class="slider-group">
+                            <input type="range" id="length-slider" min="15" max="120" value="30" step="5">
+                            <span id="length-value">30 seconds</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Generate Button -->
+                    <button id="generate-btn" class="neon-button">
+                        <span class="button-icon">✨</span> Generate Music
+                    </button>
                 </div>
-                
-                <div class="mood-sliders">
-                    <h3>Adjust Mood</h3>
-                    <div class="sliders-container"></div>
-                </div>
-                
-                <div class="length-control">
-                    <h3>Duration</h3>
-                    <input type="range" id="length-slider" min="15" max="120" value="30">
-                    <span id="length-value">30 seconds</span>
-                </div>
-                
-                <button id="generate-btn" class="neon-button">Generate Music</button>
             </section>
             
+            <!-- Visualization Section -->
             <section class="visualization-container">
-                <canvas id="visualizer"></canvas>
-                <div class="playback-controls">
-                    <button id="play-btn" class="control-button">▶</button>
-                    <button id="pause-btn" class="control-button">⏸</button>
-                    <button id="download-btn" class="control-button">↓</button>
+                <div class="visualizer-wrapper">
+                    <canvas id="visualizer"></canvas>
+                    <div class="audio-info">
+                        <div id="track-info">Ready to generate</div>
+                        <div id="time-display">--:-- / --:--</div>
+                    </div>
+                    <div class="playback-controls">
+                        <button id="play-btn" class="control-button" disabled>
+                            <span class="button-icon">▶</span>
+                        </button>
+                        <button id="pause-btn" class="control-button" disabled>
+                            <span class="button-icon">⏸</span>
+                        </button>
+                        <button id="stop-btn" class="control-button" disabled>
+                            <span class="button-icon">⏹</span>
+                        </button>
+                        <button id="download-btn" class="control-button" disabled>
+                            <span class="button-icon">↓</span> Download
+                        </button>
+                    </div>
                 </div>
             </section>
             
+            <!-- History Section -->
             <section class="history-section glassmorphism">
-                <h3>Your Creations</h3>
-                <div class="history-grid"></div>
+                <h2><span class="icon">🕰️</span> Your Creations</h2>
+                <div class="history-grid">
+                    <!-- History items will be added dynamically -->
+                    <div class="history-empty">
+                        <p>Your generated tracks will appear here</p>
+                    </div>
+                </div>
             </section>
         </main>
+        
+        <footer class="footer">
+            <p>Neon Beats AI - Powered by Stable Audio API</p>
+        </footer>
     </div>
     
-    <script src="script.js"></script>
+    <!-- JavaScript Files -->
     <script src="audioProcessor.js"></script>
     <script src="visualizer.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
