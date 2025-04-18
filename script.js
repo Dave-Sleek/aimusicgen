@@ -1,5 +1,5 @@
 // Initialize with your API key
-const audioProcessor = new AudioProcessor('your-api-key-here');
+const audioProcessor = new AudioProcessor('sk-BANWVYgxr7yFBuY77M4BVsT6NIj85vAsUE5Z2dW9Lktgij8K');
 
 // Update the generateMusic function
 async function generateMusic() {
