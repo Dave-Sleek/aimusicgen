@@ -185,3 +185,42 @@ input[type="range"]::-webkit-slider-thumb {
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     }
 }
+
+.notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    border-radius: 10px;
+    color: white;
+    z-index: 1000;
+    transform: translateY(100px);
+    opacity: 0;
+    animation: slideIn 0.5s forwards;
+}
+
+.notification.success {
+    background: rgba(46, 204, 113, 0.9);
+}
+
+.notification.error {
+    background: rgba(231, 76, 60, 0.9);
+}
+
+.notification.fade-out {
+    animation: fadeOut 0.5s forwards;
+}
+
+@keyframes slideIn {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+}
