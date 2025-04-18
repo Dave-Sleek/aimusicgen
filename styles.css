@@ -30,10 +30,10 @@ body {
 
 @keyframes glow {
     from {
-        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px var(--neon), 0 0 20px var(--neon);
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 10px var(--neon), 0 0 20px var(--neon);
     }
     to {
-        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px var(--neon), 0 0 40px var(--neon);
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 15px var(--neon), 0 0 40px var(--neon);
     }
 }
 
